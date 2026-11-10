@@ -62,5 +62,20 @@ for email in training_data[number_of_training_emails:]:
         spam_counts[word] += 1
 
 
-print(spam_counts["account"])
+# print(spam_counts["account"])
+
+
+# smoothing (ex "bank" occurs in spam, but has 0 in real emails (chaning to 0 to small prob.))
+word_probability_ham = {}
+word_probability_spam = {}
+for word in vocabulary_list:
+    word_probability_ham[word] = (1+ ham_counts[word]) / (number_of_training_emails + 2)
+    word_probability_spam[word] = (1 + spam_counts[word]) / (number_of_training_emails+2)
+
+
+
+# print(word_probability_ham["bank"])
+# print(word_probability_spam["bank"])
+
+prior_ham = number_of_training_emails / len(training_data) # 0.5
 
