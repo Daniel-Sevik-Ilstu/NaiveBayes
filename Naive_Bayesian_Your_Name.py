@@ -37,3 +37,8 @@ training_data = All_Ham[:number_of_training_emails] + All_Spam[:number_of_traini
 testing_data = All_Ham[number_of_training_emails:] + All_Spam[number_of_training_emails:] 
 
 #important: use .split() to separate the words 
+vocabulary_list = set()
+for email in training_data: 
+    words_in_email = email.split()
+    vocabulary_list.update(words_in_email)
+
