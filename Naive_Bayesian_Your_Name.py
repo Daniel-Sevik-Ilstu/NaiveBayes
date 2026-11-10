@@ -79,3 +79,6 @@ for word in vocabulary_list:
 
 prior_ham = number_of_training_emails / len(training_data) # 0.5
 
+prior_spam = number_of_training_emails / len(training_data)
+
+
