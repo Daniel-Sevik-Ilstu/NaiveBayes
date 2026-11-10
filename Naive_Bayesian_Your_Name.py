@@ -44,11 +44,9 @@ for email in training_data:
 
 
 ham_counts = {}
-for word in vocabulary_list:
-    ham_counts[word] = 0
-
 spam_counts = {}
 for word in vocabulary_list:
+    ham_counts[word] = 0
     spam_counts[word] = 0
 
 for email in training_data[:number_of_training_emails]:
