@@ -42,3 +42,25 @@ for email in training_data:
     words_in_email = email.split()
     vocabulary_list.update(words_in_email)
 
+
+ham_counts = {}
+for word in vocabulary_list:
+    ham_counts[word] = 0
+
+spam_counts = {}
+for word in vocabulary_list:
+    spam_counts[word] = 0
+
+for email in training_data[:number_of_training_emails]:
+    words = set(email.split())
+    for word in words:
+        ham_counts[word] += 1
+
+for email in training_data[number_of_training_emails:]:
+    words = set(email.split())
+    for word in words:
+        spam_counts[word] += 1
+
+
+print(spam_counts["account"])
+
