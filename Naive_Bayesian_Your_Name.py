@@ -77,6 +77,31 @@ for word in vocabulary_list:
 
 prior_ham = number_of_training_emails / len(training_data) # 0.5
 
-prior_spam = number_of_training_emails / len(training_data)
+prior_spam = number_of_training_emails / len(training_data) # should be 0.5 as the other
 
 
+predictions_list = []
+for email in testing_data:
+    words_in_email = set(email.split() )
+
+    p_ham = prior_ham
+    p_spam = prior_spam
+
+    for word in words_in_email:
+        if word in vocabulary_list:
+            p_ham *= word_probability_ham[word]
+            p_spam *= word_probability_spam[word]
+
+    if p_ham > p_spam:
+        predictions_list.append(0)
+    else:
+        predictions_list.append(1)
+
+# [0] * number_of_training_emails + [1] * number_of_training_emails
+
+
+
+# true_positive = predictions_list[p]
+# true_negative = 
+# false_positive = 
+# false_negative = append(0)
