@@ -101,7 +101,7 @@ for email in testing_data:
 
 
 
-# true_positive = predictions_list[p]
+# true_positive = 
 # true_negative = 
 # false_positive = 
-# false_negative = append(0)
+# false_negative = 
