@@ -114,3 +114,24 @@ for i in range(len(testing_labels_list)):
         false_positive += 1
     else:
         false_negative += 1
+
+
+print("True positive:", true_positive)
+print("True negative:", true_negative)
+print("False positive:", false_positive)
+print("False negative:", false_negative)
+
+accuracy = (true_positive + true_negative) / (true_positive + true_negative + false_positive + false_negative)
+print("Accuracy:", accuracy)
+
+precision = true_positive / (true_positive + false_positive)
+print("Precision:", precision)
+
+recall = true_positive / (true_positive + false_negative)
+print("Recall:", recall)
+
+f1_score = 2 * precision * recall / (precision + recall)
+print("F1 score:", f1_score)
+
+
+
