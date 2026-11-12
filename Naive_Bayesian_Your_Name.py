@@ -97,11 +97,20 @@ for email in testing_data:
     else:
         predictions_list.append(1)
 
-# [0] * number_of_training_emails + [1] * number_of_training_emails
+# [0] * number_of_training_emails + [1] * number_of_training_emails, 0 for non-spam (ham) and 1 for spam
+testing_labels_list = [0] * (len(All_Ham) - number_of_training_emails) + [1] * (len(All_Spam) - number_of_training_emails)
 
+true_positive = 0
+true_negative = 0
+false_positive = 0
+false_negative = 0
 
-
-# true_positive = 
-# true_negative = 
-# false_positive = 
-# false_negative = 
+for i in range(len(testing_labels_list)):
+    if testing_labels_list[i] == 1 and predictions_list[i] == 1:
+        true_positive += 1
+    elif testing_labels_list[i] == 0 and predictions_list[i] == 0:
+        true_negative += 1
+    elif testing_labels_list[i] == 0 and predictions_list[i] == 1:
+        false_positive += 1
+    else:
+        false_negative += 1
