@@ -28,15 +28,15 @@ This creates a problem with the way we calculate the probability for a word to t
 
 Since each class's score is obtained by: 
 score(class) = P(class) x P(w1|class) x ... x P(wn|class) (one factor for evry word in the email)
-And the probability for a word to belong to a class is obtained by: 
+And the probability for a word to be contained in a class is obtained by: 
 P(w|class) = (training emails in the class containing w + 1) /(training emails in the class + 2)
 
-It means that since spam emails in the trianing set are way longer than the ham ones, commonly used words are bound to occur more frequently (and as a result have more presence) in the spam test set purely because of the the size difference.
+It means that since spam emails in the trianing set are way longer than the ham ones, commonly used words are bound to occur more frequently (and as a result have more presence) in the spam training set purely because of the the size difference.
 For example, if the average spam email is 5 times longer than the average ham email, then the likelyhood of common/frequent words occuring in spam emails is likely to be much higher than what their occurence frequency in the ham emails, because spam emails on average contain more of any given ordinary word.
 
 So after we finish the processing of the training data, purely due to the volume advantage, the common words (due to being considered to lean towards spam) simply outweigh and overshadow the words that signify a proper ham email.
 This just retults in an email being labeleed as spam, as there is nothing to counterbalance the sheer word volume advantage spam emails have.
-
+This is why all 59 mistakes are ham emails labelled as spam, and there are 0 false negatives, as the favor is only towards the spam classification. 
 
 
 Why this issue can happen
@@ -46,12 +46,12 @@ The problem comes from how Naive Bayes computes its probabilities of test emails
 The first issue is that every word is treated as an independent vote.
 Since the model assumes that every word in an email is independent of the others, each word gets its own vote: score(class) = P(class) x P(w1|class) x ... x P(wn|class) (one factor for evry word in the email)
 In the data, all emails are stripped so that only the first occurence of the word is there and all subsequent mentions of that word are deleted for that email.
-As a result, the model can't account for context (like the words or phrases that come before a given word) even though in a real language words depend on each other.
+This results in the model being unable to account for context (like the words or phrases that come before a given word) even though in a real language words depend on each other.
 For the same reason, it can't tell that the ordinary words in a spam email only show up together because spam emails are long. So it counts that one fact (spam emails are long) again for every ordinary word, and it keeps adding up across the whole product.
 
 The other big problem is that words missing from a test email are ignored.
-Because the score only uses the words that are in the email, the model we implemented never notices that an email is missing a lot of the words that a lot of the every long spam email would have.
-That missing words can be used as evidence that the email is too short and that it lacks the features to be spam but the model never uses or sees it.
+Because the score only results from the words that are in the email, the model we implemented never notices that an email is missing a lot of the words that are typical for the long spam emails.
+Those missing words could be used as evidence that the email is too short to be spam but the model never sees that.
 
 And althought small, meaningless words like "for", "and", "a", "but" still get accounted for both ham and spam email.
 These words don't really have a meaningful context (or connotation) so their presence in ham and spam just adds noise to the probability data.
