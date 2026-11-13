@@ -128,16 +128,16 @@ print("False negative:", false_negative)
 
 
 accuracy = (true_positive + true_negative) / (true_positive + true_negative + false_positive + false_negative)
-print("Accuracy:", accuracy)
+print(f"Accuracy: {accuracy:.3f}")
 
 precision = true_positive / (true_positive + false_positive)
-print("Precision:", precision)
+print(f"Precision:{ precision:.3f}")
 
 recall = true_positive / (true_positive + false_negative)
-print("Recall:", recall)
+print(f"Recall: {recall:.3f}")
 
 f1_score = 2 * precision * recall / (precision + recall)
-print("F1 score:", f1_score)
+print(f"F1 score: {f1_score:.3f}");
 
 
 
