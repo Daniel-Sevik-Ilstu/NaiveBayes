@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Mar 10 11:06:46 2017
+Modified on: November 9th 2026
 
-@author: xfang13
+@author: desevik, kreid12
 """
 from os import walk
 import numpy as np

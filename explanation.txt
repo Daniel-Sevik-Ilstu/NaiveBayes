@@ -1,3 +1,6 @@
+Group:
+Daniel Sevik (desevik) and Kade Reid (kreid12)
+
 Result Explanation
 
 The results after running it are:
