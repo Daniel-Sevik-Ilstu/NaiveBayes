@@ -137,7 +137,6 @@ recall = true_positive / (true_positive + false_negative)
 print(f"Recall: {recall:.3f}")
 
 f1_score = 2 * precision * recall / (precision + recall)
-print(f"F1 score: {f1_score:.3f}");
-
+print(f"F1 score: {f1_score:.3f}")
 
 
