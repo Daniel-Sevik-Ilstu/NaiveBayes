@@ -26,6 +26,8 @@ The overall classifier accuracy gets to 70.5% on the collection of test emails.
 
 Low Accuracy explanation
 
+Since false negative is 0 and false positive is 49, it means classifyer is falsely classifying ham as spam.  
+
 When looking through the training and test data, we noticed that spam emails seem to be a lot longer than ham emails and hve a way higher word count.
 This creates a problem with the way we calculate the probability for a word to tend towards the ham or spam class.
 
@@ -48,7 +50,6 @@ The problem comes from how Naive Bayes computes its probabilities of test emails
 
 The first issue is that every word is treated as an independent vote.
 Since the model assumes that every word in an email is independent of the others, each word gets its own vote: score(class) = P(class) x P(w1|class) x ... x P(wn|class) (one factor for evry word in the email)
-In the data, all emails are stripped so that only the first occurence of the word is there and all subsequent mentions of that word are deleted for that email.
 This results in the model being unable to account for context (like the words or phrases that come before a given word) even though in a real language words depend on each other.
 For the same reason, it can't tell that the ordinary words in a spam email only show up together because spam emails are long. So it counts that one fact (spam emails are long) again for every ordinary word, and it keeps adding up across the whole product.
 
