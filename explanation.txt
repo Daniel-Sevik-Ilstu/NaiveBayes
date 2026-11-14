@@ -36,7 +36,7 @@ score(class) = P(class) x P(w1|class) x ... x P(wn|class) (one factor for evry w
 And the probability for a word to be contained in a class is obtained by: 
 P(w|class) = (training emails in the class containing w + 1) /(training emails in the class + 2)
 
-It means that since spam emails in the trianing set are way longer than the ham ones, commonly used words are bound to occur more frequently (and as a result have more presence) in the spam training set purely because of the the size difference.
+It means that since spam emails in the trianing set are way longer than the ham ones, commonly used words are bound to occur more (and as a result have more presence) in the spam training set purely because of the the size difference.
 For example, if the average spam email is 5 times longer than the average ham email, then the likelyhood of common/frequent words occuring in spam emails is likely to be much higher than what their occurence frequency in the ham emails, because spam emails on average contain more of any given ordinary word.
 
 So after we finish the processing of the training data, purely due to the volume advantage, the common words (due to being considered to lean towards spam) simply outweigh and overshadow the words that signify a proper ham email.
